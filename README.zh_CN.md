@@ -20,28 +20,15 @@
 [download-image]: https://img.shields.io/npm/dm/eggjs-hashids.svg?style=flat-square
 [download-url]: https://npmjs.org/package/eggjs-hashids
 
-<!--
-Description here.
--->
+[Hashids](https://www.npmjs.com/package/hashids) 是一个小型 JavaScript 库，可以从数字中生成类似 YouTube 的 ID。 当您不希望向用户公开数据库真实 ID 时可以使用它。
 
-## 依赖说明
+> 此插件仅用于 [egg.js](https://eggjs.org/)。
 
-### 依赖的 egg 版本
+## 安装
 
-egg-hashids 版本 | egg 1.x
---- | ---
-1.x | 😁
-0.x | ❌
-
-### 依赖的插件
-<!--
-
-如果有依赖其它插件，请在这里特别说明。如
-
-- security
-- multipart
-
--->
+```bash
+$ npm i eggjs-hashids --save
+```
 
 ## 开启插件
 
@@ -53,23 +40,31 @@ exports.hashids = {
 };
 ```
 
-## 使用场景
-
-- Why and What: 描述为什么会有这个插件，它主要在完成一件什么事情。
-尽可能描述详细。
-- How: 描述这个插件是怎样使用的，具体的示例代码，甚至提供一个完整的示例，并给出链接。
-
 ## 详细配置
 
-请到 [config/config.default.js](config/config.default.js) 查看详细配置项说明。
+```javascript
+// {app_root}/config/config.default.js
+exports.hashids = {
+  salt: '',
+  minLength: 0,
+  alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
+};
+```
 
-## 单元测试
+有关更多详细信息，请参阅 [config/config.default.js](config/config.default.js) 和 [hashids](https://www.npmjs.com/package/hashids) 。
 
-<!-- 描述如何在单元测试中使用此插件，例如 schedule 如何触发。无则省略。-->
+## 使用方法
+
+```javascript
+this.app.hashids.encode(1);   // => 'jR'
+this.app.hashids.decode('jR'); // => [ 1 ]
+this.app.hashids.encodeHex('507f1f77bcf86cd799439011'); // => 'y42LW46J9luq3Xq9XMly'
+this.app.hashids.decodeHex('y42LW46J9luq3Xq9XMly'); // => '507f1f77bcf86cd799439011'
+```
 
 ## 提问交流
 
-请到 [egg issues](https://github.com/eggjs/egg/issues) 异步交流。
+请到 [egg issues](https://github.com/weihongyu12/egg-hashids/issues) 异步交流。
 
 ## License
 

@@ -20,14 +20,14 @@
 [download-image]: https://img.shields.io/npm/dm/eggjs-hashids.svg?style=flat-square
 [download-url]: https://npmjs.org/package/eggjs-hashids
 
-<!--
-Description here.
--->
+[Hashids](https://www.npmjs.com/package/hashids) is small JavaScript library to generate YouTube-like ids from numbers. Use it when you don't want to expose your database ids to the user.
+
+> This plugin is only for [egg.js](https://eggjs.org/)
 
 ## Install
 
 ```bash
-$ npm i egg-hashids --save
+$ npm i eggjs-hashids --save
 ```
 
 ## Usage
@@ -42,21 +42,29 @@ exports.hashids = {
 
 ## Configuration
 
-```js
+```javascript
 // {app_root}/config/config.default.js
 exports.hashids = {
+  salt: '',
+  minLength: 0,
+  alphabet: 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890',
 };
 ```
 
-see [config/config.default.js](config/config.default.js) for more detail.
+see [config/config.default.js](config/config.default.js) and [hashids](https://www.npmjs.com/package/hashids) for more detail.
 
 ## Example
 
-<!-- example here -->
+```javascript
+this.app.hashids.encode(1);   // => 'jR'
+this.app.hashids.decode('jR'); // => [ 1 ]
+this.app.hashids.encodeHex('507f1f77bcf86cd799439011'); // => 'y42LW46J9luq3Xq9XMly'
+this.app.hashids.decodeHex('y42LW46J9luq3Xq9XMly'); // => '507f1f77bcf86cd799439011'
+```
 
 ## Questions & Suggestions
 
-Please open an issue [here](https://github.com/eggjs/egg/issues).
+Please open an issue [here](https://github.com/weihongyu12/egg-hashids/issues).
 
 ## License
 
