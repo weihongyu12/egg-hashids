@@ -36,7 +36,7 @@ $ npm i eggjs-hashids --save
 // {app_root}/config/plugin.js
 exports.hashids = {
   enable: true,
-  package: 'egg-hashids',
+  package: 'eggjs-hashids',
 };
 ```
 
